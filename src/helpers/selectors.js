@@ -1,4 +1,4 @@
-export function getAppointmentsForDay(state, dayOfWeek) {
+export default function getAppointmentsForDay(state, dayOfWeek) {
   let appointmentIDs = [];
   for (let day of state.days) {
     if (day.name === dayOfWeek) {
