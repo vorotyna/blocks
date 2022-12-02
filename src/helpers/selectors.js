@@ -1,4 +1,4 @@
-export default function getAppointmentsForDay(state, dayOfWeek) {
+export function getAppointmentsForDay(state, dayOfWeek) {
   let appointmentIDs = [];
   for (let day of state.days) {
     if (day.name === dayOfWeek) {
@@ -14,3 +14,16 @@ export default function getAppointmentsForDay(state, dayOfWeek) {
   };
   return daysAppointments;
 };
+
+
+
+export function getInterview(state, interview) {
+  let interviewObj = {};
+  if (interview === null) {
+    return null;
+  } else {
+    interviewObj.student = interview.student;
+    interviewObj.interviewer = state.interviewers[interview.interviewer];
+  }
+  return interviewObj;
+}
