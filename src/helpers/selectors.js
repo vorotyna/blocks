@@ -16,6 +16,23 @@ export function getAppointmentsForDay(state, dayOfWeek) {
 };
 
 
+export function getInterviewersForDay(state, dayOfWeek) {
+  let daysInterviewerIDs = [];
+  for (let day of state.days) {
+    if (day.name === dayOfWeek) {
+      daysInterviewerIDs = day.interviewers;
+    }
+  };
+  if (daysInterviewerIDs.length === 0) {
+    return [];
+  };
+  let daysInterviewer = [];
+  for (let interview of daysInterviewerIDs) {
+    daysInterviewer.push(state.interviewers[interview]);
+  };
+  return daysInterviewer;
+};
+
 
 export function getInterview(state, interview) {
   let interviewObj = {};
