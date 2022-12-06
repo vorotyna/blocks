@@ -15,6 +15,23 @@ export default function useApplicationData() {
 
 
 
+
+  function updateSpots(days, appointments) {
+    const currentDay = days.find(day => day.name === state.day);
+    const currentDayIndex = days.findIndex(day => day.name === state.day);
+    const appointmentIds = currentDay.appointments;
+    const nullInterviews = appointmentIds.filter((id) => !appointments[id].interview);
+    const spotsAvailable = nullInterviews.length;
+    const updatedDay = { ...currentDay, spots: spotsAvailable };
+    const updatedDays = [...days];
+    updatedDays[currentDayIndex] = updatedDay;
+
+    setState(prev => ({ ...prev, days: updatedDays }));
+  }
+
+
+
+
   function bookInterview(id, interview) {
     const appointment = {
       ...state.appointments[id],
@@ -28,7 +45,11 @@ export default function useApplicationData() {
 
     return axios
       .put(`/api/appointments/${id}`, appointment)
-      .then(setState((prev) => ({ ...prev, appointments })))
+      .then(
+        setState((prev) => ({ ...prev, appointments })),
+        updateSpots(state.days, appointments)
+      )
+      // update state with spots
       .catch((error) => {
         console.error("error:", error.response);
         return Promise.reject(error);
@@ -52,7 +73,11 @@ export default function useApplicationData() {
 
     return axios
       .delete(`/api/appointments/${id}`, appointment)
-      .then(setState((prev) => ({ ...prev, appointments })))
+      .then(
+        setState((prev) => ({ ...prev, appointments })),
+        updateSpots(state.days, appointments)
+      )
+      // update state with spots
       .catch((error) => {
         console.log("error:", error.response);
         return Promise.reject(error);
