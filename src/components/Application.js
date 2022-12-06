@@ -28,8 +28,9 @@ export default function Application(props) {
     Promise.all(promises)
       .then((promisesArray) => {
         setState(prev => ({ ...prev, days: promisesArray[0].data, appointments: promisesArray[1].data, interviewers: promisesArray[2].data }));
-      });
-  }, []);
+      })
+      .catch(error => console.log("error:", error.response));
+  }, [state]);
 
 
   function bookInterview(id, interview) {
@@ -48,7 +49,8 @@ export default function Application(props) {
     return axios.put(`/api/appointments/${id}`, appointment)
       .then(setState((prev) => ({ ...prev, appointments })))
       .catch((error) => {
-        console.log("error:", error.response);
+        console.error("error:", error.response);
+        return Promise.reject(error);
       });
   }
 
@@ -67,6 +69,7 @@ export default function Application(props) {
       .then(setState((prev) => ({ ...prev, appointments })))
       .catch((error) => {
         console.log("error:", error.response);
+        return Promise.reject(error);
       });
   }
 

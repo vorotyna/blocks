@@ -14,7 +14,7 @@ export default function useVisualMode(initialMode) {
 
   function back() {
     if (history.length > 1) {
-      history.pop();
+      let a = history.pop();
       setMode(history[history.length - 1]);
     }
   }
