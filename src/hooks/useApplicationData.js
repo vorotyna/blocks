@@ -88,10 +88,9 @@ export default function useApplicationData() {
 
 
   useEffect(() => {
-    const hostURL = "http://localhost:8001";
-    const days = axios.get(`${hostURL}/api/days`);
-    const appointments = axios.get(`${hostURL}/api/appointments`);
-    const interviewers = axios.get(`${hostURL}/api/interviewers`);
+    const days = axios.get(`/api/days`);
+    const appointments = axios.get(`/api/appointments`);
+    const interviewers = axios.get(`/api/interviewers`);
     const promises = [days, appointments, interviewers];
 
     Promise.all(promises)
@@ -99,7 +98,7 @@ export default function useApplicationData() {
         setState(prev => ({ ...prev, days: promisesArray[0].data, appointments: promisesArray[1].data, interviewers: promisesArray[2].data }));
       })
       .catch(error => console.log("error:", error.response));
-  }, [state]);
+  }, []);
 
 
   return { state, setDay, bookInterview, cancelInterview };

@@ -13,7 +13,6 @@ export default function DayListItem(props) {
     if (numOfSpots === 1) return "1 spot remaining";
     return `${numOfSpots} spots remaining`;
   }
-
   return (
     <li className={dayClass} onClick={() => props.setDay(props.name)}>
       <h2 className="text--regular">{props.name}</h2>
