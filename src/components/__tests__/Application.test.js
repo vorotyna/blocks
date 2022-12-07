@@ -8,8 +8,19 @@ import React from "react";
   We import our helper functions from the react-testing-library
   The render function allows us to render Components
 */
-import { render, waitForElement, fireEvent, getByText, prettyDOM, getAllByTestId, getByPlaceholderText, getByAltText, } from "@testing-library/react";
-import axios from 'axios';
+import {
+  render,
+  waitForElement,
+  fireEvent,
+  getByText,
+  prettyDOM,
+  getAllByTestId,
+  getByPlaceholderText,
+  getByAltText,
+  waitForElementToBeRemoved,
+  queryByText,
+} from "@testing-library/react";
+
 /*
   We import the component that we are testing
 */
@@ -30,7 +41,7 @@ describe("Application", () => {
 
 
   it("loads data, books an interview and reduces the spots remaining for Monday by 1", async () => {
-    const { container } = render(<Application />);
+    const { container, debug } = render(<Application />);
 
     await waitForElement(() => getByText(container, "Archie Cohen"));
 
@@ -45,7 +56,17 @@ describe("Application", () => {
     fireEvent.click(getByAltText(appointment, "Sylvia Palmer"));
 
     fireEvent.click(getByText(appointment, "Save"));
+    expect(getByText(appointment, "Saving...")).toBeInTheDocument();
 
+    await waitForElementToBeRemoved(() => getByText(appointment, "Saving..."));
+
+    await waitForElement(() => getByText(appointment, "Lydia Miller-Jones"));
+
+    const day = getAllByTestId(container, "day").find(day =>
+      queryByText(day, "Monday")
+    );
+
+    expect(getByText(day, "no spots remaining")).toBeInTheDocument();
   });
 });
 
