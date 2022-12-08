@@ -20,6 +20,7 @@ import {
   waitForElementToBeRemoved,
   queryByText,
   queryByAltText,
+  cleanup
 } from "@testing-library/react";
 
 /*
@@ -27,6 +28,8 @@ import {
 */
 import Application from "components/Application";
 
+
+afterEach(cleanup);
 
 
 describe("Application", () => {

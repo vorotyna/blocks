@@ -49,7 +49,6 @@ export default function useApplicationData() {
         setState((prev) => ({ ...prev, appointments })),
         updateSpots(state.days, appointments)
       )
-      // update state with spots
       .catch((error) => {
         console.error("error:", error.response);
         return Promise.reject(error);
@@ -77,7 +76,6 @@ export default function useApplicationData() {
         setState((prev) => ({ ...prev, appointments })),
         updateSpots(state.days, appointments)
       )
-      // update state with spots
       .catch((error) => {
         console.log("error:", error.response);
         return Promise.reject(error);
