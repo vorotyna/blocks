@@ -17,8 +17,6 @@ Interview Scheduler is a React app that allows a user to create, delete or edit 
 
 ## Getting Started
 
----
-
 - `git clone` this project.
 - Install dependencies using `npm install`.
 - Run Webpack Development Server using `npm start`
