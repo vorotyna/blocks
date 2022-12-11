@@ -45,10 +45,10 @@ export default function useApplicationData() {
 
     return axios
       .put(`/api/appointments/${id}`, appointment)
-      .then(
-        setState((prev) => ({ ...prev, appointments })),
-        updateSpots(state.days, appointments)
-      )
+      .then(() => {
+        setState((prev) => ({ ...prev, appointments }));
+        updateSpots(state.days, appointments);
+      })
       .catch((error) => {
         console.error("error:", error.response);
         return Promise.reject(error);
@@ -60,29 +60,26 @@ export default function useApplicationData() {
 
 
   function cancelInterview(id) {
-    const appointment = {
-      ...state.appointments[id],
-      interview: null
-    };
-
-    const appointments = {
-      ...state.appointments,
-      [id]: appointment
-    };
-
     return axios
-      .delete(`/api/appointments/${id}`, appointment)
-      .then(
-        setState((prev) => ({ ...prev, appointments })),
-        updateSpots(state.days, appointments)
-      )
+      .delete(`/api/appointments/${id}`)
+      .then(() => {
+        const appointment = {
+          ...state.appointments[id],
+          interview: null
+        };
+
+        const appointments = {
+          ...state.appointments,
+          [id]: appointment
+        };
+        setState((prev) => ({ ...prev, appointments }));
+        updateSpots(state.days, appointments);
+      })
       .catch((error) => {
         console.log("error:", error.response);
         return Promise.reject(error);
       });
   }
-
-
 
 
   useEffect(() => {

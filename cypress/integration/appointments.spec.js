@@ -29,9 +29,9 @@ describe("Appointments", () => {
 
 
   it("should edit an interview", () => {
-    cy.get("[alt='Edit']")
-      .invoke('show')
-      .click();
+    cy.get("[alt=Edit]")
+      .first()
+      .click({ force: true });
 
     cy.get("[data-testid=student-name-input]")
       .clear()
