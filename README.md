@@ -52,16 +52,16 @@ Blocks is a scheduling React app that allows a user to create, delete or edit an
 
 ### App Overview
 
-!["Main page"](https://github.com/vorotyna/scheduler/blob/master/docs/main-page.png?raw=true)
+!["Main page"](https://github.com/vorotyna/blocks/blob/master/docs/main-page.png?raw=true)
 
-!["Appointment form"](https://github.com/vorotyna/scheduler/blob/master/docs/appointment-form.png?raw=true)
+!["Appointment form"](https://github.com/vorotyna/blocks/blob/master/docs/appointment-form.png?raw=true)
 
-!["Delete appointment"](https://github.com/vorotyna/scheduler/blob/master/docs/delete-appointment.png?raw=true)
+!["Delete appointment"](https://github.com/vorotyna/blocks/blob/master/docs/delete-appointment.png?raw=true)
 
-!["Error"](https://github.com/vorotyna/scheduler/blob/master/docs/error.png?raw=true)
+!["Error"](https://github.com/vorotyna/blocks/blob/master/docs/error.png?raw=true)
 
 ### Testing Results
 
-!["Cypress"](https://github.com/vorotyna/scheduler/blob/master/docs/cypress.png?raw=true)
+!["Cypress"](https://github.com/vorotyna/blocks/blob/master/docs/cypress.png?raw=true)
 
-!["Coverage report"](https://github.com/vorotyna/scheduler/blob/master/docs/coverage-report.png?raw=true)
+!["Coverage report"](https://github.com/vorotyna/blocks/blob/master/docs/coverage-report.png?raw=true)
