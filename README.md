@@ -42,7 +42,11 @@ Blocks is a scheduling React app that allows a user to create, delete or edit an
 
 ## Additional Information
 
-- The server runs through another repository, `scheduler-api`, on port 8001.
+- The server runs through another repository, `blocks-api`, on port 8001.
+- Testing with Cypress requires three terminal windows to be open:
+  1. Run the `npm run test:server` comman in the `blocks-api` directory.
+  2. Run `npm start` from the root of `blocks` directory.
+  3. Run `npm run cypress` from the root of `blocks` directory.
 
 ## Screenshots
 
