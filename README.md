@@ -1,6 +1,6 @@
-# Interview Scheduler
+# Blocks
 
-Interview Scheduler is a React app that allows a user to create, delete or edit an interview appointment.
+Blocks is a scheduling React app that allows a user to create, delete or edit an interview appointment.
 
 ## Learning Goals
 
